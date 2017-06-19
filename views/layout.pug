@@ -1,0 +1,27 @@
+mixin navlink(linkUrl, bob, label)
+  li(class= 0 === url.indexOf(linkUrl) ? 'nav-item active' : 'nav-item')
+    a.nav-link(href=linkUrl)
+      i.fa(class="fa-"+bob)
+      = ' ' + label
+
+
+doctype html
+html
+  head
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css", integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ", crossorigin="anonymous")
+    link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+    title= title
+
+  body
+    nav.navbar.navbar-static-top.navbar-toggleable-md.navbar-inverse.bg-inverse(role="navigation")
+      .navbar-header
+        a.navbar-brand(href="/") CZSCTZCE
+      ul.navbar-nav
+        +navlink('/levels/level1', 'user', 'Levels')
+        +navlink('/tournament', 'grain', 'View Tournament')
+
+    block content
+    script(src="https://code.jquery.com/jquery-3.1.1.slim.min.js", integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n", crossorigin="anonymous")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js", integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js", integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn", crossorigin="anonymous")
+    block script
