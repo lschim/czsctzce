@@ -4,8 +4,9 @@ var config = getConfig({
   isDev: true,
   in: 'client/application.js',
   out: 'public',
-  clearBeforeBuild: 'login.js',
+  clearBeforeBuild: '!(videos/)'
 })
+
 
 // Extends hjs generated config
 config.entry = {
