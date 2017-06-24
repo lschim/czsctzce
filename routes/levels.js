@@ -1,6 +1,6 @@
 var express = require('express')
 var router = express.Router()
-const RADIUS = 5
+const RADIUS = 10
 const RESPONSE = [
 {t: 11, x: 133, y: 115},
 {t: 12, x: 133, y: 123},

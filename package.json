@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "webpack",
-    "start": "node ./bin/www",
+    "start": "node boot.js",
     "test": "mocha test/ --recursive --compilers js:babel-register --trace-deprecation"
   },
   "babel": {
@@ -42,7 +42,7 @@
     "babel-preset-stage-2": "^6.5.0",
     "babel-register": "^6.16.3",
     "chai": "^3.5.0",
-    "webpack": "^1.12.14",
-    "hjs-webpack": "^7.2.0"
+    "hjs-webpack": "^7.2.0",
+    "webpack": "^1.12.14"
   }
 }

@@ -16,14 +16,15 @@ $(function () {
     return {x: left, y: top}
   }
 
-
   $('#videoBox').on('click', (e) => {
+    let mouse = getMousePosition(e)
+    let parent = getPosition(e.target)
     $.post('/levels/level1',
-      {t: $('#videoBox').get(0).currentTime, x: mouse.x - parent.x, y:mouse.y - parent.y},
+      {t: $('#videoBox').get(0).currentTime, x: mouse.x - parent.x, y: mouse.y - parent.y},
       function (data, textStatus, jqXHR) {
         console.log('Is level succeeded ?' + data.achieved)
       })
-  }
+  })
 
   // ======== FOR DEBUG ===========
   $('#videoBox').on('mousemove', (e) => {
@@ -41,14 +42,14 @@ $(function () {
 
   document.onkeypress =
   (e) => {
-    if(e.which === 32){
+    if (e.which === 32) {
       let video = $('#videoBox').get(0)
-      if(video.paused){
+      if (video.paused) {
         video.play()
       } else {
         video.pause()
       }
     }
   }
-  //========================
+  // ========================
 })
