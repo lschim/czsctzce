@@ -10,6 +10,7 @@ html
   head
     link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css", integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ", crossorigin="anonymous")
     link(rel='stylesheet', href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+    link(rel='stylesheet', href="/style/style.css")
     title= title
 
   body
@@ -18,11 +19,14 @@ html
         a.navbar-brand(href="/") CZSCTZCE
       ul.navbar-nav
         +navlink('/levels/level1', 'user', 'Levels')
-        +navlink('/tournament', 'grain', 'View Tournament')
-
-    div#overlay(style='display:block;')
+    div#instructions(style='display:none;')
+      div#overlay
+      div#instructions-box
+        div#instructions-text.text-center
+        button#instructions-button.btn.btn-danger(type='button')
     block content
     script(src="https://code.jquery.com/jquery-3.1.1.min.js")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js", integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb", crossorigin="anonymous")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js", integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn", crossorigin="anonymous")
+    script(src="/main.js")
     block script

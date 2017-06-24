@@ -4,12 +4,13 @@ var config = getConfig({
   isDev: true,
   in: 'client/application.js',
   out: 'public',
-  clearBeforeBuild: '!(videos/ | style/)'
+  clearBeforeBuild: '!(videos/ | style/ | images/)'
 })
 
 // Extends hjs generated config
 config.entry = {
   level1: './client/javascripts/level1.js',
+  level2: './client/javascripts/level2.js',
   main: config.entry
 
 }
