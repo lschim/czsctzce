@@ -36,6 +36,7 @@ $(function () {
           setInstructionsButton('Niveau 2', () => {
             window.location = '/levels/level2'
           })
+          showInstructions()
         }
       })
     })
@@ -54,12 +55,12 @@ $(function () {
   }
 
   // ======== FOR DEBUG ===========
-  $('#videoBox').on('mousemove', (e) => {
-    const parent = getPosition(e.target)
-    const mouse = getMousePosition(e)
-    $('#x').text(mouse.x - parent.x)
-    $('#y').text(mouse.y - parent.y)
-  })
+  // $('#videoBox').on('mousemove', (e) => {
+  //   const parent = getPosition(e.target)
+  //   const mouse = getMousePosition(e)
+  //   $('#x').text(mouse.x - parent.x)
+  //   $('#y').text(mouse.y - parent.y)
+  // })
 
   // $('#videoBox').on('click', (e) => {
   //   const parent = getPosition(e.target)

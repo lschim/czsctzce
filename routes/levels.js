@@ -38,6 +38,24 @@ router.get('/level2', function (req, res, next) {
   res.render('level2')
 })
 
+function testLevel2 (selected) {
+  if (!selected) {
+    return false
+  }
+  for (let i = 0; i < 5; i++) {
+    if (selected.indexOf(i.toString()) < 0) {
+      return false
+    }
+  }
+  return true
+}
+
+router.post('/level2', function (req, res, next) {
+  let achieved = testLevel2(req.body['selected[]'])
+  res.setHeader('Content-Type', 'application/json')
+  res.send(JSON.stringify({achieved: achieved}))
+})
+
 router.get('/level3', function (req, res, next) {
   res.render('level3')
 })

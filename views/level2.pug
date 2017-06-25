@@ -3,14 +3,16 @@ extends layout
 block content
   div.container
     div.row
-      div.col-lg-12.text-center
-        video#videoBox
-          source(src="/videos/level1.mp4", type="video/mp4")
-          | Change de browser
-        div
-          span#x
-          br
-          span#y
-
+      div.col-lg-4
+        img#0.img-fluid(src='/images/1.jpg')
+      div.col-lg-4
+        img#1.img-fluid(src='/images/5.jpg')
+      div.col-lg-4
+        img#2.img-fluid(src='/images/3.jpg')
+    div.row
+      div.col-lg-4
+        img#3.img-fluid(src='/images/4.jpg')
+      div.col-lg-4
+        img#4.img-fluid(src='/images/2.jpg')
 block script
   script(src="/level2.js")
