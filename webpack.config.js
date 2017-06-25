@@ -11,6 +11,7 @@ var config = getConfig({
 config.entry = {
   level1: './client/javascripts/level1.js',
   level2: './client/javascripts/level2.js',
+  level3: './client/javascripts/level3.js',
   main: config.entry
 
 }
