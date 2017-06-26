@@ -32,7 +32,8 @@ $(function () {
         console.log('Is level succeeded ?' + data.achieved)
         if(data.achieved) {
           $('#videoBox').get(0).pause()
-          setInstructionsText('Félicitations !!! Tu as sauvé ce pauvre enfant de la noyade !!')
+          //Ok c'est le corrigé mais j'ai pas le temps de protéger mieux que ca
+          setInstructionsText('Félicitations !!! Tu as sauvé ce pauvre enfant de la noyade !!<br/>Voici ce qu\'aurait fait Czsctce dans la vraie vie : <br/><video controls="controls"><source src="/videos/corrige.mp4" type="video/mp4"></video>')
           setInstructionsButton('Niveau 2', () => {
             window.location = '/levels/level2'
           })
