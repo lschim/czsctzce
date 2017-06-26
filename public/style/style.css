@@ -34,3 +34,21 @@
   position:relative;
   left:40%;
 }
+
+#correctLetters {
+  text-align: center;
+  margin-top:50px;
+  font-size:300%;
+}
+
+#letters {
+  height : 400px;
+}
+
+.letter {
+  position : fixed;
+  width : 20px;
+  height: 20px;
+  display: inline;
+  text-align: center
+}

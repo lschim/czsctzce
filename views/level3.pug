@@ -2,7 +2,11 @@ extends layout
 
 block content
   div.container
-    div#selector
-    div#letters
+    div.row
+      div.col-lg-3
+      div.col-lg-6#letters
+    div.row
+      div.col-lg-4
+      div.col-lg-4#correctLetters
 block script
   script(src="/level3.js")
