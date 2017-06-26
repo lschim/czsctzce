@@ -15,11 +15,19 @@ $(function () {
     nbrLetters = nbrLettersInit
     timeoutLettersValue = timeoutLettersValueInit
     timeoutTickValue = timeoutTickValueInit
+    $('.letter').each((index, element) => {
+      $(element).remove()
+    })
   }
 
   function startLevel3 () {
     timeoutLetters = setInterval(addLetters, timeoutLettersValue)
     timeoutTick = setInterval(moveLetters, timeoutTickValue)
+  }
+
+  function stopLevel3 () {
+    clearInterval(timeoutLetters)
+    clearInterval(timeoutTick)
   }
 
   function moveLetters () {
@@ -65,13 +73,51 @@ $(function () {
 
   function clickOnLetter (e) {
     $(e.target).remove()
-    nbrLetters += 2
-    clearInterval(timeoutLetters)
-    //timeoutLettersValue -= 200
-    timeoutLetters = setInterval(addLetters, timeoutLettersValue)
-    clearInterval(timeoutTick)
-    timeoutTickValue /= 1.1
-    timeoutTick = setInterval(moveLetters, timeoutTickValue)
+    $.post('/levels/level3/letter',
+        {letter: $(e.target).html()},
+        function (data, textStatus, jqXHR) {
+          if (data.finished) {
+            // CEST GAGNNEEEEEEEE
+            stopLevel3()
+            setInstructionsText('OUIIIIIII BRAVOOOO !!! Tu as prouvé ta valeur, digne d\'une vraie Czsctzce')
+            setInstructionsButton('Merci', () => {
+              $.get('/levels/password', function (data, textStatus, jqXHR) {
+                setInstructionsText(data.password)
+                setInstructionsButton('Je sais exactement ce qu\'il faut que je fasse', () => {
+                  window.location('/')
+                  hideInstructions()
+                })
+                $('#instructions-button').attr('style', 'left:20%;') //Dirty... sorry :)
+              })
+            })
+            showInstructions()
+          } else {
+
+            if (data.res) {
+              // It was a correct letter !!
+              nbrLetters += 2
+              clearInterval(timeoutLetters)
+              // timeoutLettersValue -= 200
+              timeoutLetters = setInterval(addLetters, timeoutLettersValue)
+              clearInterval(timeoutTick)
+              timeoutTickValue /= 1.1
+              timeoutTick = setInterval(moveLetters, timeoutTickValue)
+              $('#correctLetters').html(data.state)
+            } else {
+              stopLevel3()
+              // C'est raté
+              setInstructionsText('Les règles de ce pendu sont dégeulasses.<br/> Une seule erreur et il faut tout recommencer.<br/>')
+              setInstructionsButton('Je déteste ce jeu', () => {
+                resetLevel3()
+                hideInstructions()
+                startLevel3()
+              })
+              showInstructions()
+            }
+          }
+        },
+        'json'
+      )
   }
 
   function generateStartingPosition (dirx, diry) {

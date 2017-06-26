@@ -11,17 +11,17 @@ const defaultStateLvl3 = '____ _\'______________!'
 
 let currentStateLvl3 = defaultStateLvl3
 const lettersDefault = {
-  "n": {pos: [0, 16, 17, 19], played: false},
-  "o": {pos: [1, 15, 18], played: false},
-  "u": {pos: [2], played: false},
-  "s": {pos: [3, 12, 13, 20], played: false},
-  "m": {pos: [5, 8], played: false},
-  "i": {pos: [7, 14], played: false},
-  "p": {pos: [9], played: false},
-  "r": {pos: [10], played: false},
-  "e": {pos: [11], played: false}
+  'n': {pos: [0, 16, 17, 19], played: false},
+  'o': {pos: [1, 15, 18], played: false},
+  'u': {pos: [2], played: false},
+  's': {pos: [3, 12, 13, 20], played: false},
+  'm': {pos: [5, 8], played: false},
+  'i': {pos: [7, 14], played: false},
+  'p': {pos: [9], played: false},
+  'r': {pos: [10], played: false},
+  'e': {pos: [11], played: false}
  }
-const lettersState //TODO copy lettersDefault
+let lettersState = JSON.parse(JSON.stringify(lettersDefault)) // Dirty :D
 /* GET users listing. */
 router.get('/level1', function (req, res, next) {
   res.render('level1')
@@ -88,6 +88,7 @@ router.get('/level3', function (req, res, next) {
   if (currentLvl < 3) {
     res.render('level' + currentLvl)
   } else {
+    resetLvl3()
     res.render('level3')
   }
 })
@@ -107,7 +108,7 @@ router.post('/level3/letter', function (req, res, next) {
   let result = testLetter(req.body.letter)
   if (result) {
     let isFinished = checkFinishedLvl3()
-    if(isFinished) {
+    if (isFinished) {
       currentLvl = 4
     }
     res.setHeader('Content-Type', 'application/json')
@@ -120,7 +121,15 @@ router.post('/level3/letter', function (req, res, next) {
 })
 
 function checkFinishedLvl3 () {
-  // TODO Parcourir les elements et vérifier s'ils sont tous a played
+  for (let l in lettersState) {
+    console.log('Testing letter ')
+    console.log(l)
+    if (!lettersState[l].played) {
+      console.log('not played')
+      return false
+    }
+  }
+  return true
 }
 
 function testLetter (char) {
@@ -128,10 +137,10 @@ function testLetter (char) {
     // Letter is valid !!
     let letter = lettersState[char]
     for (let i = 0; i < letter.pos.length; i++) {
-      // TODO change char at
-      // currentStateLvl3.setCharAt(letter.pos[i], char)
+      currentStateLvl3 = setCharAt(currentStateLvl3, letter.pos[i], char)
     }
     lettersState[char].played = true
+    console.log(lettersState)
     return true
   }
   return false
@@ -139,7 +148,12 @@ function testLetter (char) {
 
 function resetLvl3 () {
   currentStateLvl3 = defaultStateLvl3
-  //lettersState TODO copy lettersDefault
+  lettersState = JSON.parse(JSON.stringify(lettersDefault))
+}
+
+// Replace char at index index in string with replacement
+function setCharAt (string, index, replacement) {
+  return string.substr(0, index) + replacement + string.substr(index + 1)
 }
 
 router.get('/password', function (req, res, next) {
@@ -148,7 +162,7 @@ router.get('/password', function (req, res, next) {
     res.send(JSON.stringify({password: 'RETOURNE FAIRE LES NIVEAU FLEMASSE, TU CROIS QUE JE ME SUIS CASSE LE CUL POUR RIEN ???'}))
   } else {
     res.setHeader('Content-Type', 'application/json')
-    res.send(JSON.stringify({password: 'La caverne c\'est mon tapis, et le mot de passe à indiquer au gardien est : \"Garde le cadeau, je n\'en veux pas\"'}))
+    res.send(JSON.stringify({password: 'La caverne c\'est mon tapis, et le mot de passe à indiquer au gardien est : <br/> \"Garde le cadeau, je n\'en veux pas\"'}))
   }
 })
 

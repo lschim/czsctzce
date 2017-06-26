@@ -20,7 +20,7 @@ $(function () {
         function (data, textStatus, jqXHR) {
           console.log('Is level succeeded ?' + data.achieved)
           if (data.achieved) {
-            setInstructionsText('En effet !!! Czsctzce est tellement belle que chaque photo de Czsctzce est la plus belle !!')
+            setInstructionsText('En effet !!!<br/> Czsctzce est tellement belle que chaque photo de Czsctzce est la plus belle !!')
             setInstructionsButton('Niveau 3', () => {
               hideInstructions()
               window.location = '/levels/level3'

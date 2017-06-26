@@ -42,7 +42,7 @@ $(function () {
     })
 
     $('#videoBox').on('ended', () => {
-      setInstructionsText('Oh noooon, tu n\'as pas été assez rapide, et la personne s\'est noyée. Tu à le droit de recommencer, car il est évident que personne ne peut égaler Czsctzce')
+      setInstructionsText('Oh noooon, tu n\'as pas été assez rapide, et la personne s\'est noyée. Tu as le droit de recommencer, car il est évident que personne ne peut égaler Czsctzce.')
       setInstructionsButton('Recommencer', () => {
         hideInstructions()
         startLevel1()
@@ -53,33 +53,6 @@ $(function () {
     $('#videoBox').get(0).play()
 
   }
-
-  // ======== FOR DEBUG ===========
-  // $('#videoBox').on('mousemove', (e) => {
-  //   const parent = getPosition(e.target)
-  //   const mouse = getMousePosition(e)
-  //   $('#x').text(mouse.x - parent.x)
-  //   $('#y').text(mouse.y - parent.y)
-  // })
-
-  // $('#videoBox').on('click', (e) => {
-  //   const parent = getPosition(e.target)
-  //   const mouse = getMousePosition(e)
-  //   alert('Position x ' + (mouse.x - parent.x) + ' Position y ' + (mouse.y - parent.y))
-  // })
-
-  document.onkeypress =
-  (e) => {
-    if (e.which === 32) {
-      let video = $('#videoBox').get(0)
-      if (video.paused) {
-        video.play()
-      } else {
-        video.pause()
-      }
-    }
-  }
-  // ========================
 
   setInstructionsText('<div>Bienvenue aventurière, dans la chasse au trésor de Czsctzce. <br/> Accompli tous les niveaux pour prouver que tu es digne d\'obtenir le trésor de Czsctzce!<br/></div>')
   setInstructionsButton('A l\'aventure!', () => {
