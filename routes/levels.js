@@ -6,7 +6,7 @@ const RESPONSE = [
 {t: 12, x: 133, y: 123},
 {t: 13, x: 135, y: 123},
 {t: 14, x: 130, y: 118}]
-
+var currentLvl = 1
 /* GET users listing. */
 router.get('/level1', function (req, res, next) {
   res.render('level1')
@@ -28,14 +28,19 @@ export function testLevel1 (t, x, y) {
 
 router.post('/level1', function (req, res, next) {
   let achieved = testLevel1(parseInt(req.body.t), parseInt(req.body.x), parseInt(req.body.y))
-  // TODO : unlock lvl 2
-  console.log('Level 2 unlocked !!')
+  if (achieved) {
+    currentLvl = 2
+  }
   res.setHeader('Content-Type', 'application/json')
   res.send(JSON.stringify({ achieved: achieved }))
 })
 
 router.get('/level2', function (req, res, next) {
-  res.render('level2')
+  if (currentLvl < 2) {
+    res.render('level' + currentLvl)
+  } else {
+    res.render('level2')
+  }
 })
 
 function testLevel2 (selected) {
@@ -51,13 +56,26 @@ function testLevel2 (selected) {
 }
 
 router.post('/level2', function (req, res, next) {
-  let achieved = testLevel2(req.body['selected[]'])
+  let achieved
+  if (currentLvl < 2) {
+    achieved = false
+  } else {
+    achieved = testLevel2(req.body['selected[]'])
+  }
+  if (achieved) {
+    currentLvl = 3
+  }
   res.setHeader('Content-Type', 'application/json')
   res.send(JSON.stringify({achieved: achieved}))
 })
 
 router.get('/level3', function (req, res, next) {
-  res.render('level3')
+  if (currentLvl < 3) {
+    res.render('level' + currentLvl)
+  } else {
+    res.render('level3')
+  }
 })
+
 
 export default router

@@ -17,3 +17,7 @@ window.setInstructionsText = function setInstructionsText (text) {
   $('#instructions-text').html('')
   $('#instructions-text').append(text)
 }
+
+$('#playButton').on('click'){
+  window.location = '/levels/level1'
+}
