@@ -128,10 +128,7 @@ router.post('/level3/letter', function (req, res, next) {
 
 function checkFinishedLvl3 () {
   for (let l in lettersState) {
-    console.log('Testing letter ')
-    console.log(l)
     if (!lettersState[l].played) {
-      console.log('not played')
       return false
     }
   }
@@ -146,7 +143,6 @@ function testLetter (char) {
       currentStateLvl3 = setCharAt(currentStateLvl3, letter.pos[i], char)
     }
     lettersState[char].played = true
-    console.log(lettersState)
     return true
   }
   return false

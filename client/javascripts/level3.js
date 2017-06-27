@@ -84,7 +84,7 @@ $(function () {
               $.get('/levels/password', function (data, textStatus, jqXHR) {
                 setInstructionsText('Voici les indices te permettant de récupérer ton trésor : <br/>'+data.password)
                 setInstructionsButton('Je sais exactement ce qu\'il faut que je fasse', () => {
-                  window.location('/')
+                  window.location = '/'
                   hideInstructions()
                 })
                 $('#instructions-button').attr('style', 'left:20%;') //Dirty... sorry :)

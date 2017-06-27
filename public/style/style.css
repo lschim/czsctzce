@@ -48,9 +48,13 @@ body {
 
 #letters {
   height : 400px;
+  border-radius: 10px;
+  border: 1px outset black;
+  padding: 0;
 }
 
 .letter {
+  cursor: default;
   position : fixed;
   width : 20px;
   height: 20px;
