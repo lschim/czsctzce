@@ -4,7 +4,7 @@ var config = getConfig({
   isDev: true,
   in: 'client/application.js',
   out: 'public',
-  clearBeforeBuild: '!(videos/ | style/ | images/)'
+  clearBeforeBuild: '!(videos/ | style/ | images/ | favicon/ | music/)'
 })
 
 // Extends hjs generated config

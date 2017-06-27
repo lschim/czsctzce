@@ -20,7 +20,7 @@ $(function () {
         function (data, textStatus, jqXHR) {
           console.log('Is level succeeded ?' + data.achieved)
           if (data.achieved) {
-            setInstructionsText('En effet !!!<br/> Czsctzce est tellement belle que chaque photo de Czsctzce est la plus belle !!')
+            setInstructionsText('En effet !!!<br/> <strong class="text-danger">Czsctzce</strong> est tellement belle que chaque photo de <strong class="text-danger">Czsctzce</strong> est la plus belle !!<br/>')
             setInstructionsButton('Niveau 3', () => {
               hideInstructions()
               window.location = '/levels/level3'
@@ -34,7 +34,7 @@ $(function () {
   })
 
   $('.img-fluid').on('click', () => {
-    setInstructionsText('Effectivement, cette photo de Czsctzce est magnifique. Mais je trouve qu\'il y en a une autre qui est la plus belle photo de Czsctzce.<br/> Sélectionne la plus belle photo de Czsctsce!')
+    setInstructionsText('Effectivement, cette photo de <strong class="text-danger">Czsctzce</strong> est magnifique.<br/> Mais je trouve qu\'il y en a une autre qui est la plus belle photo de <strong class="text-danger">Czsctzce</strong>.<br/> Sélectionne la plus belle photo de <strong class="text-danger">Czsctzce</strong>!<br/>')
     setInstructionsButton('Je suis d\'accord', () => {
       hideInstructions()
     })
@@ -42,7 +42,7 @@ $(function () {
   })
 
   // Display instructions for level 2
-  setInstructionsText('Czsctzce est une belle personne. Sélectionne la plus belle photo de Czsctzce!')
+  setInstructionsText('<strong class="text-danger">Czsctzce</strong> est une belle personne.<br/> Sélectionne la plus belle photo de <strong class="text-danger">Czsctzce</strong>!<br/>')
   setInstructionsButton('Facile!', () => {
     hideInstructions()
   })

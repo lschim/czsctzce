@@ -22,9 +22,15 @@ const lettersDefault = {
   'e': {pos: [11], played: false}
  }
 let lettersState = JSON.parse(JSON.stringify(lettersDefault)) // Dirty :D
+
+function getVariablesToDisplay () {
+  return {title: 'Czsctzce',
+    lvl: currentLvl
+    }
+}
 /* GET users listing. */
 router.get('/level1', function (req, res, next) {
-  res.render('level1')
+  res.render('level1', getVariablesToDisplay())
 })
 
 function inRange (x, target) {
@@ -52,9 +58,9 @@ router.post('/level1', function (req, res, next) {
 
 router.get('/level2', function (req, res, next) {
   if (currentLvl < 2) {
-    res.render('level' + currentLvl)
+    res.render('level' + currentLvl, getVariablesToDisplay())
   } else {
-    res.render('level2')
+    res.render('level2', getVariablesToDisplay())
   }
 })
 
@@ -86,10 +92,10 @@ router.post('/level2', function (req, res, next) {
 
 router.get('/level3', function (req, res, next) {
   if (currentLvl < 3) {
-    res.render('level' + currentLvl)
+    res.render('level' + currentLvl, getVariablesToDisplay())
   } else {
     resetLvl3()
-    res.render('level3')
+    res.render('level3', getVariablesToDisplay())
   }
 })
 
@@ -162,7 +168,7 @@ router.get('/password', function (req, res, next) {
     res.send(JSON.stringify({password: 'RETOURNE FAIRE LES NIVEAU FLEMASSE, TU CROIS QUE JE ME SUIS CASSE LE CUL POUR RIEN ???'}))
   } else {
     res.setHeader('Content-Type', 'application/json')
-    res.send(JSON.stringify({password: 'La caverne c\'est mon tapis, et le mot de passe à indiquer au gardien est : <br/> \"Garde le cadeau, je n\'en veux pas\"'}))
+    res.send(JSON.stringify({password: 'La caverne c\'est mon tapis, et le mot de passe à indiquer au gardien est <br/> \"Garde le cadeau, je n\'en veux pas\"'}))
   }
 })
 

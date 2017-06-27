@@ -79,10 +79,10 @@ $(function () {
           if (data.finished) {
             // CEST GAGNNEEEEEEEE
             stopLevel3()
-            setInstructionsText('OUIIIIIII BRAVOOOO !!! Tu as prouvé ta valeur, digne d\'une vraie Czsctzce')
+            setInstructionsText('OUIIIIIII BRAVOOOO !!!<br/> Tu as prouvé ta valeur, digne d\'une vraie <strong class="text-danger">Czsctzce</strong><br/>')
             setInstructionsButton('Merci', () => {
               $.get('/levels/password', function (data, textStatus, jqXHR) {
-                setInstructionsText(data.password)
+                setInstructionsText('Voici les indices te permettant de récupérer ton trésor : <br/>'+data.password)
                 setInstructionsButton('Je sais exactement ce qu\'il faut que je fasse', () => {
                   window.location('/')
                   hideInstructions()
@@ -182,7 +182,7 @@ $(function () {
     return Math.floor(Math.random() * 26) + 97 // Between 97 and 122
   }
 
-  setInstructionsText('Félicitations ! Bienvenue au 3ème niveau.<br/> Czsctzce sait faire marcher sa tête, et son corps. Prouve que tu peux en faire autant en résolvant le pendu de la caverne secrète !!')
+  setInstructionsText('Félicitations ! Bienvenue au 3ème niveau.<br/> <strong class="text-danger">Czsctzce</strong> sait faire marcher sa tête, et son corps. Prouve que tu peux en faire autant en résolvant le pendu de la caverne secrète !!')
   setInstructionsButton('Je peux le faire', () => {
     hideInstructions()
     startLevel3()

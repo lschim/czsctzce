@@ -33,17 +33,18 @@ $(function () {
         if(data.achieved) {
           $('#videoBox').get(0).pause()
           //Ok c'est le corrigé mais j'ai pas le temps de protéger mieux que ca
-          setInstructionsText('Félicitations !!! Tu as sauvé ce pauvre enfant de la noyade !!<br/>Voici ce qu\'aurait fait Czsctce dans la vraie vie : <br/><video controls="controls"><source src="/videos/corrige.mp4" type="video/mp4"></video>')
+          setInstructionsText('Félicitations !!! Tu as sauvé ce pauvre enfant de la noyade !!<br/>Voici ce qu\'aurait fait <strong class="text-danger">Czsctce</strong> dans la vraie vie (admire son bronzage et ses muscles) : <br/><video controls="controls"><source src="/videos/corrige.mp4" type="video/mp4"></video>')
           setInstructionsButton('Niveau 2', () => {
             window.location = '/levels/level2'
           })
+          $('#instructions-button').attr('style', 'margin-top:0px;')
           showInstructions()
         }
       })
     })
 
     $('#videoBox').on('ended', () => {
-      setInstructionsText('Oh noooon, tu n\'as pas été assez rapide, et la personne s\'est noyée. Tu as le droit de recommencer, car il est évident que personne ne peut égaler Czsctzce.')
+      setInstructionsText('Oh noooon, tu n\'as pas été assez rapide, et la personne s\'est noyée. Tu as le droit de recommencer, car il est évident que personne ne peut égaler <strong class="text-danger">Czsctzce</strong>.')
       setInstructionsButton('Recommencer', () => {
         hideInstructions()
         startLevel1()
@@ -55,13 +56,13 @@ $(function () {
 
   }
 
-  setInstructionsText('<div>Bienvenue aventurière, dans la chasse au trésor de Czsctzce. <br/> Accompli tous les niveaux pour prouver que tu es digne d\'obtenir le trésor de Czsctzce!<br/></div>')
+  setInstructionsText('<div>Bienvenue aventurière, dans la chasse au trésor de <strong class="text-danger">Czsctzce</strong>. <br/> Accomplis tous les niveaux pour prouver que tu es digne d\'obtenir le trésor de <strong class="text-danger">Czsctzce</strong>!<br/></div>')
   setInstructionsButton('A l\'aventure!', () => {
     setInstructionsButton('C\'est parti', () => {
       hideInstructions()
       startLevel1()
     })
-    setInstructionsText('Czsctzce a l\'oeil d\'un faucon, et les réflexes d\'un cougar. Prouve que tu peux égaler ses compétences en maître nageuse en cliquant sur la personne sur le point de se noyer!')
+    setInstructionsText('<strong class="text-danger">Czsctzce</strong> a l\'oeil d\'un faucon, et les réflexes d\'un cougar. Prouve que tu peux égaler ses compétences en maître nageuse en cliquant sur la personne sur le point de se noyer!')
   })
   showInstructions()
 

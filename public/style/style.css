@@ -1,4 +1,8 @@
 
+body {
+  background-color: #E0F2F7;
+}
+
 #navbar {
   z-index: 10002;
 }
@@ -33,6 +37,7 @@
   float:left;
   position:relative;
   left:40%;
+  margin-top:30px;
 }
 
 #correctLetters {
@@ -50,5 +55,10 @@
   width : 20px;
   height: 20px;
   display: inline;
-  text-align: center
+  text-align: center;
+  -webkit-user-select: none; // For Webkit
+  -khtml-user-select: none;
+  -moz-user-select: none; // For Mozilla
+  -o-user-select: none;
+  user-select: none; // Default
 }
